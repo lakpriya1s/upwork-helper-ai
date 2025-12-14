@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Upwork Helper",
+  "name": "Upwork Helper AI",
   "version": "1.0.0",
   "description": "Highlights recent Upwork jobs and generates personalized cover letters using AI",
   "permissions": ["storage", "activeTab"],

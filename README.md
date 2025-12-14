@@ -1,4 +1,4 @@
-# Upwork Helper - Chrome Extension
+# Upwork Helper AI - Chrome Extension
 
 An AI-powered Chrome extension that helps Upwork freelancers by:
 - 🔥 Multi-tiered job highlighting (1h, 2h, 4h time windows with different colors)
@@ -83,8 +83,8 @@ An AI-powered Chrome extension that helps Upwork freelancers by:
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable "Developer mode" (toggle in top-right corner)
 4. Click "Load unpacked"
-5. Select the `upwork-helper` folder
-6. The extension should now appear in your extensions list
+5. Select the `upwork-helper-ai` folder
+6. The extension should now appear as "Upwork Helper AI" in your extensions list
 
 #### Option B: Create Icons First
 Before loading the extension, you need to create icon files:
@@ -258,7 +258,7 @@ This extension is designed to **assist** freelancers, not automate job applicati
 ### Making Changes
 1. Edit the source files
 2. Go to `chrome://extensions/`
-3. Click the refresh icon on the Upwork Helper extension card
+3. Click the refresh icon on the Upwork Helper AI extension card
 4. Test your changes on Upwork
 
 ### Debugging
