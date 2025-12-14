@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upwork Helper - Settings</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        opacity: 0.9;
+        font-size: 14px;
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-description {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #444;
+        font-size: 14px;
+      }
+
+      input[type="password"],
+      input[type="text"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+      }
+
+      input[type="password"]:focus,
+      input[type="text"]:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      textarea {
+        min-height: 200px;
+        resize: vertical;
+        font-family: "Courier New", monospace;
+        line-height: 1.6;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .btn-secondary:hover {
+        background: #e0e0e0;
+      }
+
+      .btn-test {
+        background: #4caf50;
+        color: white;
+      }
+
+      .btn-test:hover {
+        background: #45a049;
+      }
+
+      .template-variables {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 16px;
+      }
+
+      .template-variables h4 {
+        font-size: 14px;
+        margin-bottom: 12px;
+        color: #333;
+      }
+
+      .variables-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 8px;
+      }
+
+      .variable-item {
+        background: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .variable-item:hover {
+        background: #e3f2fd;
+      }
+
+      .variable-name {
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      .variable-desc {
+        color: #666;
+        font-size: 11px;
+        margin-top: 2px;
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        animation: slideIn 0.3s ease-out;
+        z-index: 1000;
+        max-width: 400px;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .notification.success {
+        background: #4caf50;
+        color: white;
+      }
+
+      .notification.error {
+        background: #f44336;
+        color: white;
+      }
+
+      .notification.info {
+        background: #2196f3;
+        color: white;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: auto;
+        cursor: pointer;
+      }
+
+      .checkbox-group label {
+        margin: 0;
+        cursor: pointer;
+      }
+
+      .help-text {
+        font-size: 12px;
+        color: #666;
+        margin-top: 6px;
+        line-height: 1.4;
+      }
+
+      .status-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 8px;
+      }
+
+      .status-indicator.configured {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .status-indicator.not-configured {
+        background: #ffebee;
+        color: #c62828;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>⚙️ Upwork Helper Settings</h1>
+        <p>Configure your extension preferences and AI settings</p>
+      </div>
+
+      <div class="content">
+        <!-- API Key Section -->
+        <div class="section">
+          <div class="section-title">🔑 OpenAI API Key</div>
+          <div class="section-description">
+            Enter your OpenAI API key to enable AI-powered cover letter
+            generation. Get your API key from
+            <a href="https://platform.openai.com/api-keys" target="_blank"
+              >OpenAI Platform</a
+            >.
+          </div>
+          <div class="form-group">
+            <label for="apiKey">API Key</label>
+            <input type="password" id="apiKey" placeholder="sk-..." />
+            <div class="help-text">
+              Your API key is stored locally and never shared.
+            </div>
+            <div id="apiKeyStatus"></div>
+          </div>
+          <div class="button-group">
+            <button id="testApiKey" class="btn-test">Test API Key</button>
+          </div>
+        </div>
+
+        <!-- Model Selection -->
+        <div class="section">
+          <div class="section-title">🤖 AI Model</div>
+          <div class="form-group">
+            <label for="openaiModel">OpenAI Model</label>
+            <select id="openaiModel">
+              <!-- GPT-5 Series (Latest) -->
+              <option value="gpt-5.2-pro">GPT-5.2 Pro (Most Advanced)</option>
+              <option value="gpt-5.2">GPT-5.2</option>
+              <option value="gpt-5.2-mini">GPT-5.2 Mini</option>
+              <option value="gpt-5.2-nano">GPT-5.2 Nano</option>
+              <option value="gpt-5.1">GPT-5.1</option>
+              <option value="gpt-5">GPT-5</option>
+              <option value="gpt-5-mini">GPT-5 Mini</option>
+              <option value="gpt-5-nano">GPT-5 Nano (Fastest GPT-5)</option>
+              
+              <!-- GPT-4.1 Series -->
+              <option value="gpt-4.1">GPT-4.1</option>
+              <option value="gpt-4.1-mini">GPT-4.1 Mini</option>
+              <option value="gpt-4.1-nano">GPT-4.1 Nano</option>
+              
+              <!-- GPT-4 Series -->
+              <option value="gpt-4o-mini">
+                GPT-4o Mini (Recommended - Fast & Affordable)
+              </option>
+              <option value="gpt-4o">GPT-4o (More Advanced)</option>
+              <option value="gpt-4-turbo">GPT-4 Turbo</option>
+              
+              <!-- GPT-3.5 Series -->
+              <option value="gpt-3.5-turbo">
+                GPT-3.5 Turbo (Fastest & Cheapest)
+              </option>
+            </select>
+            <div class="help-text">
+              Choose the AI model for generating cover letters. GPT-4o Mini
+              offers the best balance of quality and cost.
+            </div>
+          </div>
+        </div>
+
+        <!-- Developer Profile Section -->
+        <div class="section">
+          <div class="section-title">👤 Developer Profile</div>
+          <div class="section-description">
+            Add your professional information to generate more personalized cover letters. 
+            This information will be used by the AI to create relevant proposals based on your experience.
+          </div>
+          
+          <div class="form-group">
+            <label for="profileName">Full Name</label>
+            <input type="text" id="profileName" placeholder="Your professional name" />
+            <div class="help-text">Your name as it appears in professional contexts.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileTitle">Professional Title</label>
+            <input type="text" id="profileTitle" placeholder="e.g., Full-Stack Developer, React Native Specialist" />
+            <div class="help-text">Your current professional title or specialization.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileYears">Years of Experience</label>
+            <input type="number" id="profileYears" placeholder="5" min="0" />
+            <div class="help-text">Total years of professional experience.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileBio">Professional Bio/Summary</label>
+            <textarea id="profileBio" placeholder="Brief professional summary (2-3 sentences about your expertise and what you do best)" style="min-height: 100px;"></textarea>
+            <div class="help-text">A concise summary of your professional background and strengths.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileWorkExperience">Work Experience & Key Projects</label>
+            <textarea id="profileWorkExperience" placeholder="List your key projects, achievements, and relevant work experience. Include technologies used and results delivered." style="min-height: 150px;"></textarea>
+            <div class="help-text">Highlight your most relevant projects and accomplishments.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileEducation">Education & Certifications</label>
+            <textarea id="profileEducation" placeholder="Degrees, certifications, relevant courses, and training" style="min-height: 100px;"></textarea>
+            <div class="help-text">Your educational background and professional certifications.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileLanguages">Programming Languages</label>
+            <textarea id="profileLanguages" placeholder="List programming languages you know (e.g., JavaScript, Python, Java, TypeScript, Go, etc.)" style="min-height: 80px;"></textarea>
+            <div class="help-text">Programming languages you're proficient in.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileFrameworks">Frameworks & Technologies</label>
+            <textarea id="profileFrameworks" placeholder="List frameworks and technologies (e.g., React, Node.js, Django, AWS, Docker, PostgreSQL, etc.)" style="min-height: 100px;"></textarea>
+            <div class="help-text">Frameworks, libraries, and technologies you work with.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileSkills">Core Skills & Technologies</label>
+            <textarea id="profileSkills" placeholder="List your technical skills, frameworks, tools, and technologies (e.g., React, Node.js, Python, AWS, etc.)" style="min-height: 100px;"></textarea>
+            <div class="help-text">Technical skills and tools you're proficient in.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profilePortfolio">Portfolio/GitHub URL (Optional)</label>
+            <input type="text" id="profilePortfolio" placeholder="https://github.com/yourname or https://yourportfolio.com" />
+            <div class="help-text">Link to your portfolio or GitHub profile.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileHourlyRate">Hourly Rate (Optional)</label>
+            <input type="text" id="profileHourlyRate" placeholder="$50/hour" />
+            <div class="help-text">Your typical hourly rate (can be mentioned in proposals if relevant).</div>
+          </div>
+        </div>
+
+        <!-- Template Section -->
+        <div class="section">
+          <div class="section-title">📝 Cover Letter Template</div>
+          <div class="section-description">
+            Customize your cover letter template using variables. The AI will
+            use this as a guide to generate personalized cover letters.
+          </div>
+          <div class="form-group">
+            <label for="template">Template</label>
+            <textarea
+              id="template"
+              placeholder="Dear {{clientName}},..."
+            ></textarea>
+            <div class="help-text">
+              Use {{variableName}} syntax to insert dynamic job information.
+            </div>
+          </div>
+
+          <div class="template-variables">
+            <h4>Available Variables (click to copy):</h4>
+            <div class="variables-grid" id="variablesGrid"></div>
+          </div>
+        </div>
+
+        <!-- Auto-Generate Section -->
+        <div class="section">
+          <div class="section-title">⚡ Auto-Generate</div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="autoGenerate" checked />
+            <label for="autoGenerate"
+              >Automatically generate cover letters when viewing job
+              pages</label
+            >
+          </div>
+          <div class="help-text">
+            When enabled, cover letters will be generated automatically. When
+            disabled, you'll need to click a button to generate.
+          </div>
+        </div>
+
+        <!-- Job Highlighting Section -->
+        <div class="section">
+          <div class="section-title">🎨 Job Highlighting</div>
+          <div class="section-description">
+            Customize how recently posted jobs are highlighted in the job list.
+          </div>
+          <div class="form-group">
+            <label>Highlight Time Windows</label>
+            <div class="checkbox-group">
+              <input type="checkbox" id="highlight1h" checked />
+              <label for="highlight1h"
+                >🔥 Super New (within 1 hour) - Red</label
+              >
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="highlight2h" checked />
+              <label for="highlight2h">✨ New (within 2 hours) - Green</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="highlight4h" checked />
+              <label for="highlight4h">⏰ Recent (within 4 hours) - Blue</label>
+            </div>
+          </div>
+          <div class="help-text">
+            Jobs will be highlighted with different colors based on when they
+            were posted. This helps you quickly identify the freshest
+            opportunities.
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="button-group">
+          <button id="saveSettings" class="btn-primary">
+            💾 Save Settings
+          </button>
+          <button id="resetToDefault" class="btn-secondary">
+            🔄 Reset to Default
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

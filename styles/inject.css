@@ -1,0 +1,475 @@
+/**
+ * Injected Styles for Upwork Helper Extension
+ * Styles for highlighted jobs and UI elements injected into Upwork pages
+ */
+
+/* Job Highlighting - Jobs List Page */
+/* Jobs posted within 1 hour - Hot Red/Orange */
+.upwork-helper-1h {
+  border: 3px solid #ff4444 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 12px rgba(255, 68, 68, 0.4) !important;
+  position: relative !important;
+  background: rgba(255, 68, 68, 0.05) !important;
+}
+
+.upwork-helper-1h::before {
+  content: "🔥 SUPER NEW";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff4444 0%, #ff1744 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 68, 68, 0.6);
+  z-index: 10;
+  animation: upwork-helper-pulse 1.5s infinite;
+}
+
+/* Jobs posted within 2 hours - Bright Green */
+.upwork-helper-2h {
+  border: 3px solid #4caf50 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.3) !important;
+  position: relative !important;
+  background: rgba(76, 175, 80, 0.05) !important;
+}
+
+.upwork-helper-2h::before {
+  content: "✨ NEW";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+  z-index: 10;
+  animation: upwork-helper-pulse 2s infinite;
+}
+
+/* Jobs posted within 4 hours - Blue */
+.upwork-helper-4h {
+  border: 3px solid #2196f3 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.3) !important;
+  position: relative !important;
+  background: rgba(33, 150, 243, 0.05) !important;
+}
+
+.upwork-helper-4h::before {
+  content: "⏰ RECENT";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.4);
+  z-index: 10;
+}
+
+/* Legacy class for backwards compatibility */
+.upwork-helper-recent-job {
+  border: 3px solid #4caf50 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.3) !important;
+  position: relative !important;
+}
+
+.upwork-helper-recent-job::before {
+  content: "🔥 NEW";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+  z-index: 10;
+  animation: upwork-helper-pulse 2s infinite;
+}
+
+@keyframes upwork-helper-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Notification System */
+.upwork-helper-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 400px;
+  animation: upwork-helper-slide-in 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@keyframes upwork-helper-slide-in {
+  from {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.upwork-helper-notification::before {
+  font-size: 18px;
+}
+
+.upwork-helper-notification-success {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.upwork-helper-notification-success::before {
+  content: "✓";
+}
+
+.upwork-helper-notification-error {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+}
+
+.upwork-helper-notification-error::before {
+  content: "✗";
+}
+
+.upwork-helper-notification-info {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+}
+
+.upwork-helper-notification-info::before {
+  content: "ℹ";
+}
+
+/* Manual Generate Button */
+.upwork-helper-generate-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  margin: 16px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  z-index: 1000;
+}
+
+.upwork-helper-generate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.upwork-helper-generate-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.upwork-helper-generate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading Spinner */
+.upwork-helper-loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: upwork-helper-spin 0.8s linear infinite;
+}
+
+@keyframes upwork-helper-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Highlight animation for textarea when filled */
+@keyframes upwork-helper-highlight {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(76, 175, 80, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+  }
+}
+
+textarea.upwork-helper-filled {
+  animation: upwork-helper-highlight 1.5s ease-in-out;
+}
+
+/* Badge for jobs posted within 1 hour - Alternative style */
+.upwork-helper-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+  box-shadow: 0 2px 6px rgba(255, 107, 107, 0.4);
+  animation: upwork-helper-pulse 2s infinite;
+}
+
+/* Status indicator */
+.upwork-helper-status {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 999998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.upwork-helper-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4caf50;
+  animation: upwork-helper-pulse-dot 2s infinite;
+}
+
+@keyframes upwork-helper-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Tooltip */
+.upwork-helper-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  z-index: 999999;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.upwork-helper-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.9);
+}
+
+/* Auto-Apply Indicator */
+.upwork-helper-indicator {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  animation: upwork-helper-slide-down 0.3s ease-out;
+}
+
+@keyframes upwork-helper-slide-down {
+  from {
+    transform: translate(-50%, -100px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.upwork-helper-indicator-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.upwork-helper-indicator-icon {
+  font-size: 20px;
+  animation: upwork-helper-bounce 1s infinite;
+}
+
+@keyframes upwork-helper-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.upwork-helper-indicator-text {
+  letter-spacing: 0.3px;
+}
+
+/* Auto-apply visual indicator on job links */
+a[data-auto-apply="true"]::after {
+  content: "🤖";
+  margin-left: 6px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .upwork-helper-notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+  }
+
+  .upwork-helper-1h::before,
+  .upwork-helper-2h::before,
+  .upwork-helper-4h::before,
+  .upwork-helper-recent-job::before {
+    top: 5px;
+    right: 5px;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .upwork-helper-generate-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .upwork-helper-indicator {
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+
+  .upwork-helper-indicator-content {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .upwork-helper-notification {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .upwork-helper-1h {
+    box-shadow: 0 0 16px rgba(255, 68, 68, 0.6) !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+  }
+
+  .upwork-helper-2h {
+    box-shadow: 0 0 16px rgba(76, 175, 80, 0.5) !important;
+    background: rgba(76, 175, 80, 0.1) !important;
+  }
+
+  .upwork-helper-4h {
+    box-shadow: 0 0 16px rgba(33, 150, 243, 0.5) !important;
+    background: rgba(33, 150, 243, 0.1) !important;
+  }
+
+  .upwork-helper-recent-job {
+    box-shadow: 0 0 16px rgba(76, 175, 80, 0.5) !important;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .upwork-helper-recent-job::before,
+  .upwork-helper-badge,
+  .upwork-helper-status-dot {
+    animation: none;
+  }
+
+  .upwork-helper-notification {
+    animation: none;
+  }
+
+  .upwork-helper-generate-button:hover {
+    transform: none;
+  }
+
+  textarea.upwork-helper-filled {
+    animation: none;
+  }
+}
