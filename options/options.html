@@ -287,6 +287,59 @@
         background: #ffebee;
         color: #c62828;
       }
+
+      .support-section {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .support-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .support-description {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .support-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 32px;
+        background: #FFDD00;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+
+      .support-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 221, 0, 0.4);
+        background: #FFC700;
+      }
+
+      .coffee-icon {
+        font-size: 20px;
+      }
     </style>
   </head>
   <body>
@@ -503,6 +556,21 @@
             were posted. This helps you quickly identify the freshest
             opportunities.
           </div>
+        </div>
+
+        <!-- Support Section -->
+        <div class="section support-section">
+          <div class="support-title">
+            ☕ Support This Extension
+          </div>
+          <div class="support-description">
+            If you find this tool helpful and it's saving you time on Upwork, consider buying me a coffee! 
+            Your support helps keep this extension free and continuously improving.
+          </div>
+          <a href="https://buymeacoffee.com/lakpriya1" target="_blank" class="support-button">
+            <span class="coffee-icon">☕</span>
+            Buy Me a Coffee
+          </a>
         </div>
 
         <!-- Save Button -->
