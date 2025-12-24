@@ -40,10 +40,16 @@ function updateApiKeyStatus(configured) {
  */
 function updateAutoGenerateToggle(enabled) {
   const toggle = document.getElementById("autoGenerateToggle");
+  const generateButton = document.getElementById("generateNow");
+  
   if (enabled) {
     toggle.classList.add("active");
+    // Hide the generate button when auto-generate is on
+    generateButton.style.display = "none";
   } else {
     toggle.classList.remove("active");
+    // Show the generate button when auto-generate is off
+    generateButton.style.display = "flex";
   }
 }
 
@@ -78,11 +84,14 @@ async function checkCurrentTab() {
       tab &&
       tab.url &&
       (tab.url.includes("upwork.com/jobs/") ||
-        tab.url.includes("upwork.com/ab/proposals/job/"))
+        tab.url.includes("upwork.com/ab/proposals/job/") ||
+        tab.url.includes("upwork.com/nx/proposals/job/"))
     ) {
       generateButton.disabled = !currentSettings.apiKey;
       if (!currentSettings.apiKey) {
         generateButton.title = "Please configure API key first";
+      } else {
+        generateButton.title = "Generate cover letter for this job";
       }
     } else {
       generateButton.disabled = true;
@@ -148,6 +157,8 @@ function toggleAutoGenerate() {
   chrome.storage.sync.set({ autoGenerate: newValue }, () => {
     currentSettings.autoGenerate = newValue;
     updateAutoGenerateToggle(newValue);
+    // Recheck tab to update button state
+    checkCurrentTab();
     showNotification(
       newValue ? "Auto-generate enabled" : "Auto-generate disabled",
       "success"
