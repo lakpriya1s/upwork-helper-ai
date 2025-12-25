@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Upwork Cover Letter AI",
   "version": "1.0.0",
-  "description": "Highlights recent Upwork jobs and generates personalized cover letters using AI",
+  "description": "Generates personalized cover letters using AI and highlights recent Upwork jobs",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://*.upwork.com/*"],
   "background": {
