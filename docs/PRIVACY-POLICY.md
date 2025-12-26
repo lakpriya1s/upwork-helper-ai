@@ -1,6 +1,6 @@
 # Privacy Policy for Upwork Cover Letter AI
 
-**Effective Date:** December 26, 2025  
+**Effective Date:** November 10, 2026
 **Last Updated:** December 26, 2025
 
 ## Introduction
@@ -205,6 +205,8 @@ By using the Extension, you consent to:
 4. Local storage of your settings and profile information
 
 If you do not agree with this policy, please do not use the Extension.
+
+email: lakpriya@codescale.lk
 
 ---
 
